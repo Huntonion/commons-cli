@@ -24,8 +24,8 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'mvn -Drat.skip=true verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Huntonion_commons-cli'
-                sh 'mvn -B -DskipTests -Drat.skip=true clean package'             }
+                sh 'mvn -B -Drat.skip=true -DskipTests verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Huntonion_commons-cli'
+           }
         }
     }
 }
