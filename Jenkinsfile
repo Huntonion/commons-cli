@@ -27,6 +27,16 @@ pipeline {
                 sh 'mvn -B -Drat.skip=true -DskipTests verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Huntonion_commons-cli -Dsonar.branch.name=dev -Dsonar.branch.target=dev'
            }
         }
+        stage('Test') { 
+            steps {
+                sh 'mvn -Drat.skip=true test' 
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml' 
+                }
+            }
+        }
     }
 }
 
