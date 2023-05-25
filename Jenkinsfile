@@ -24,12 +24,12 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'mvn -B -Drat.skip=true -DskipTests verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Huntonion_commons-cli -Dsonar.branch.name=dev -Dsonar.branch.target=dev'
+                sh 'mvn -B -Drat.skip=true -DskipTests verify'
            }
         }
         stage('Test') { 
             steps {
-                sh 'mvn -Drat.skip=true test' 
+                sh 'mvn -Drat.skip=true test org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Huntonion_commons-cli -Dsonar.branch.name=dev -Dsonar.branch.target=dev' 
             }
             post {
                 always {
