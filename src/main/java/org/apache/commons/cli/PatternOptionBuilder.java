@@ -129,9 +129,9 @@ public class PatternOptionBuilder {
             return PatternOptionBuilder.FILES_VALUE;
         case '/':
             return PatternOptionBuilder.URL_VALUE;
+        default:
+            return null;
         }
-
-        return null;
     }
 
     /**
