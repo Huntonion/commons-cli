@@ -14,6 +14,11 @@
 
 package org.apache.commons.cli;
 
+
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class ParseTest {
     public static void main(String[] args) throws ParseException {
         Options options = new Options();
@@ -28,7 +33,10 @@ public class ParseTest {
             System.out.println("Hello World!!");
         }
         if(cmd.hasOption("t")){
-            System.out.println("test");
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+            ZoneId z = ZoneId.of( "Europe/Rome" ) ;
+            ZonedDateTime zdt = ZonedDateTime.now( z ) ;
+            System.out.println(dtf.format(zdt));
         }
 
 
