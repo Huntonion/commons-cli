@@ -224,6 +224,21 @@
     <defaultGoal>clean verify apache-rat:check japicmp:cmp checkstyle:check spotbugs:check javadoc:javadoc</defaultGoal>
     <pluginManagement>
       <plugins>
+        <plugin>
+          <!-- Build an executable JAR -->
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.1.0</version>
+          <configuration>
+            <archive>
+              <manifest>
+                <addClasspath>true</addClasspath>
+                <classpathPrefix>lib/</classpathPrefix>
+                <mainClass>org.apache.commons.cli.ParseTest</mainClass>
+              </manifest>
+            </archive>
+          </configuration>
+        </plugin>
     <plugin>
       <groupId>org.jacoco</groupId>
       <artifactId>jacoco-maven-plugin</artifactId>
