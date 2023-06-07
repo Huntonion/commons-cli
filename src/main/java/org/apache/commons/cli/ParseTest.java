@@ -39,7 +39,7 @@ public class ParseTest {
             System.out.println(dtf.format(zdt));
         }
         if(cmd.hasOption("d")){
-            System.out.println("hello from dockerhub :)");
+            System.out.println("hello from dockerhub 2 :)");
         }
 
 
