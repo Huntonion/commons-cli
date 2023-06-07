@@ -38,7 +38,9 @@ public class ParseTest {
             ZonedDateTime zdt = ZonedDateTime.now( z ) ;
             System.out.println(dtf.format(zdt));
         }
-
+        if(cmd.hasOption("d")){
+            System.out.println("hello from dockerhub :)");
+        }
 
 
     }
