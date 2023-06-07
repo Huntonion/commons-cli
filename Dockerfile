@@ -13,7 +13,7 @@
      #   limitations under the License.*/FROM openjdk:8
 
 FROM openjdk:8
-ADD target/commons-cli-1.6-SNAPSHOT.jar commons-cli.jar
-ENTRYPOINT [ "java", "-jar","commons-cli.jar"]
+ADD target/commons-cli-1.6-SNAPSHOT.jar commons-cli-1.6-SNAPSHOT.jar
+ENTRYPOINT [ "java", "-jar","commons-cli-1.6-SNAPSHOT.jar"]
 CMD ["-h"]
 EXPOSE 8080

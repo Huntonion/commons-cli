@@ -30,7 +30,7 @@ public class ParseTest {
         CommandLine cmd  = parser.parse(options,args);
 
         if(cmd.hasOption("h")){
-            System.out.println("Hello World!!");
+            System.out.println("Hello World !!!!!");
         }
         if(cmd.hasOption("t")){
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
@@ -38,10 +38,5 @@ public class ParseTest {
             ZonedDateTime zdt = ZonedDateTime.now( z ) ;
             System.out.println(dtf.format(zdt));
         }
-        if(cmd.hasOption("d")){
-            System.out.println("hello from dockerhub 2 :)");
-        }
-
-
     }
 }
