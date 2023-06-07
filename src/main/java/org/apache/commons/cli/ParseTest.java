@@ -25,6 +25,7 @@ public class ParseTest {
 
         options.addOption("h",false, "Hello world");
         options.addOption("t",false,"display current time");
+        options.addOption("d",false,"hello from dockerhub");
 
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd  = parser.parse(options,args);
@@ -37,6 +38,9 @@ public class ParseTest {
             ZoneId z = ZoneId.of( "Europe/Rome" ) ;
             ZonedDateTime zdt = ZonedDateTime.now( z ) ;
             System.out.println(dtf.format(zdt));
+        }
+        if(cmd.hasOption("d")){
+            System.out.println("hello from Dockerhub");
         }
     }
 }
