@@ -249,6 +249,7 @@ public class DefaultParser implements CommandLineParser {
      *
      * @param token
      */
+
     private String getLongPrefix(final String token) {
         final String t = Util.stripLeadingHyphens(token);
 

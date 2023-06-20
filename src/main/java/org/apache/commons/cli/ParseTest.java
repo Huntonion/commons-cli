@@ -15,12 +15,14 @@
 package org.apache.commons.cli;
 
 
+import java.io.IOException;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class ParseTest {
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws ParseException{
+
         Options options = new Options();
 
         options.addOption("h",false, "Hello world");
@@ -42,5 +44,10 @@ public class ParseTest {
         if(cmd.hasOption("d")){
             System.out.println("hello from Dockerhub");
         }
+
+        Class c = org.apache.commons.cli.ParseTest.class;
+        String className = c.getName();
+        System.out.println("The fully-qualified name of the class is: " + className);
+
     }
 }

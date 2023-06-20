@@ -17,6 +17,7 @@ site-content
 /.classpath
 /.project
 /.settings/
+evosuite-1.2.0.jar
 
 ### IntelliJ IDEA ###
 .idea/
