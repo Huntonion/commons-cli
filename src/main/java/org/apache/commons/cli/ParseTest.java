@@ -45,9 +45,5 @@ public class ParseTest {
             System.out.println("hello from Dockerhub");
         }
 
-        Class c = org.apache.commons.cli.ParseTest.class;
-        String className = c.getName();
-        System.out.println("The fully-qualified name of the class is: " + className);
-
     }
 }
