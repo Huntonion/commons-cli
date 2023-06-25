@@ -28,6 +28,7 @@ public class ParseTest {
         options.addOption("h",false, "Hello world");
         options.addOption("t",false,"display current time");
         options.addOption("d",false,"hello from dockerhub");
+        options.addOption("e",false,"hello from dockerhub2");
 
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd  = parser.parse(options,args);
@@ -42,6 +43,9 @@ public class ParseTest {
             System.out.println(dtf.format(zdt));
         }
         if(cmd.hasOption("d")){
+            System.out.println("hello from Dockerhub");
+        }
+        if(cmd.hasOption("e")){
             System.out.println("hello from Dockerhub");
         }
 

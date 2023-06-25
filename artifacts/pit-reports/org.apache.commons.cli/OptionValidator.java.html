@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>OptionValidator.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/*</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  Licensed to the Apache Software Foundation (ASF) under one or more</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  contributor license agreements.  See the NOTICE file distributed with</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  this work for additional information regarding copyright ownership.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  The ASF licenses this file to You under the Apache License, Version 2.0</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  (the &#34;License&#34;); you may not use this file except in compliance with</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  the License.  You may obtain a copy of the License at</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      http://www.apache.org/licenses/LICENSE-2.0</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  Unless required by applicable law or agreed to in writing, software</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  distributed under the License is distributed on an &#34;AS IS&#34; BASIS,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  See the License for the specific language governing permissions and</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  limitations under the License.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_16'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_17'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_18'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package org.apache.commons.cli;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_19'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_20'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_21'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Validates an Option string.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_22'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_23'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * @since 1.1</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_24'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_25'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>final class OptionValidator {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_26'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_27'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Returns whether the specified character is a valid character.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_28'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_29'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param c the character to validate</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_30'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return true if {@code c} is a letter.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_31'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_32'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private static boolean isValidChar(final char c) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_33'/>
+33
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_33'>2</a>
+<span>
+1. isValidChar : replaced boolean return with false for org/apache/commons/cli/OptionValidator::isValidChar &rarr; KILLED<br/>
+2. isValidChar : replaced boolean return with true for org/apache/commons/cli/OptionValidator::isValidChar &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return Character.isJavaIdentifierPart(c);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_34'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_35'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_36'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_37'/>
+37
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_37'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Returns whether the specified character is a valid Option.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_38'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_39'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param c the option to validate</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_40'/>
+40
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_40'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return true if {@code c} is a letter, &#39;?&#39; or &#39;@&#39;, otherwise false.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_41'/>
+41
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_41'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_42'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private static boolean isValidOpt(final char c) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_43'/>
+43
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_43'>5</a>
+<span>
+1. isValidOpt : negated conditional &rarr; KILLED<br/>
+2. isValidOpt : negated conditional &rarr; KILLED<br/>
+3. isValidOpt : negated conditional &rarr; KILLED<br/>
+4. isValidOpt : replaced boolean return with false for org/apache/commons/cli/OptionValidator::isValidOpt &rarr; KILLED<br/>
+5. isValidOpt : replaced boolean return with true for org/apache/commons/cli/OptionValidator::isValidOpt &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return isValidChar(c) || c == &#39;?&#39; || c == &#39;@&#39;;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_44'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_45'/>
+45
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_45'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_46'/>
+46
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_46'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_47'/>
+47
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_47'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Validates whether {@code opt} is a permissible Option shortOpt. The rules that specify if the {@code opt}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_48'/>
+48
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_48'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * is valid are:</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_49'/>
+49
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_49'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_50'/>
+50
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_50'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;ul&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_51'/>
+51
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_51'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;li&#62;a single character {@code opt} that is either &#39; &#39;(special case), &#39;?&#39;, &#39;@&#39; or a letter&#60;/li&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_52'/>
+52
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_52'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;li&#62;a multi character {@code opt} that only contains letters.&#60;/li&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_53'/>
+53
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_53'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;/ul&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_54'/>
+54
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_54'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_55'/>
+55
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_55'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * In case {@code opt} is {@code null} no further validation is performed.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_56'/>
+56
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_56'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_57'/>
+57
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_57'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param option The option string to validate, may be null</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_58'/>
+58
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_58'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws IllegalArgumentException if the Option is not valid.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_59'/>
+59
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_59'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_60'/>
+60
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_60'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    static String validate(final String option) throws IllegalArgumentException {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_61'/>
+61
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_61'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        // if opt is NULL do not check further</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_62'/>
+62
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_62'>1</a>
+<span>
+1. validate : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (option == null) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_63'/>
+63
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_63'>1</a>
+<span>
+1. validate : replaced return value with &#34;&#34; for org/apache/commons/cli/OptionValidator::validate &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return null;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_64'/>
+64
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_64'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_65'/>
+65
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_65'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_66'/>
+66
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_66'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        // handle the single character opt</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_67'/>
+67
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_67'>1</a>
+<span>
+1. validate : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (option.length() == 1) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_68'/>
+68
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_68'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            final char ch = option.charAt(0);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_69'/>
+69
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_69'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_70'/>
+70
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_70'>1</a>
+<span>
+1. validate : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            if (!isValidOpt(ch)) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_71'/>
+71
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_71'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                throw new IllegalArgumentException(&#34;Illegal option name &#39;&#34; + ch + &#34;&#39;&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_72'/>
+72
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_72'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_73'/>
+73
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_73'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        } else {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_74'/>
+74
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_74'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            // handle the multi character opt</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_75'/>
+75
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_75'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            for (final char ch : option.toCharArray()) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_76'/>
+76
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_76'>1</a>
+<span>
+1. validate : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                if (!isValidChar(ch)) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_77'/>
+77
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_77'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                    throw new IllegalArgumentException(&#34;The option &#39;&#34; + option + &#34;&#39; contains an illegal &#34; + &#34;character : &#39;&#34; + ch + &#34;&#39;&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_78'/>
+78
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_78'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_79'/>
+79
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_79'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_80'/>
+80
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_80'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_81'/>
+81
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_81'>1</a>
+<span>
+1. validate : replaced return value with &#34;&#34; for org/apache/commons/cli/OptionValidator::validate &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return option;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_82'/>
+82
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_82'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3ddec942_83'/>
+83
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_83'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3ddec942_33'>33</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_33'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isValidChar<br/><b>Killed by : </b>org.apache.commons.cli.OptionTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionTest]/[test:testHasArgName(org.apache.commons.cli.OptionTest)]</span></span> replaced boolean return with false for org/apache/commons/cli/OptionValidator::isValidChar &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isValidChar<br/><b>Killed by : </b>org.apache.commons.cli.OptionTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionTest]/[test:testBuilderInvalidOptionName3(org.apache.commons.cli.OptionTest)]</span></span> replaced boolean return with true for org/apache/commons/cli/OptionValidator::isValidChar &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3ddec942_43'>43</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_43'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isValidOpt<br/><b>Killed by : </b>org.apache.commons.cli.OptionTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionTest]/[test:testHasArgName(org.apache.commons.cli.OptionTest)]</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isValidOpt<br/><b>Killed by : </b>org.apache.commons.cli.OptionBuilderTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionBuilderTest]/[test:testSpecialOptChars(org.apache.commons.cli.OptionBuilderTest)]</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>isValidOpt<br/><b>Killed by : </b>org.apache.commons.cli.OptionBuilderTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionBuilderTest]/[test:testSpecialOptChars(org.apache.commons.cli.OptionBuilderTest)]</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>isValidOpt<br/><b>Killed by : </b>org.apache.commons.cli.OptionTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionTest]/[test:testHasArgName(org.apache.commons.cli.OptionTest)]</span></span> replaced boolean return with false for org/apache/commons/cli/OptionValidator::isValidOpt &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>isValidOpt<br/><b>Killed by : </b>org.apache.commons.cli.OptionBuilderTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionBuilderTest]/[test:testSpecialOptChars(org.apache.commons.cli.OptionBuilderTest)]</span></span> replaced boolean return with true for org/apache/commons/cli/OptionValidator::isValidOpt &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3ddec942_62'>62</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_62'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>validate<br/><b>Killed by : </b>org.apache.commons.cli.OptionTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionTest]/[test:testBuilderInsufficientParams2(org.apache.commons.cli.OptionTest)]</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3ddec942_63'>63</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_63'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>validate<br/><b>Killed by : </b>org.apache.commons.cli.OptionTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionTest]/[test:testBuilderInsufficientParams1(org.apache.commons.cli.OptionTest)]</span></span> replaced return value with &#34;&#34; for org/apache/commons/cli/OptionValidator::validate &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3ddec942_67'>67</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_67'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>validate<br/><b>Killed by : </b>org.apache.commons.cli.OptionTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionTest]/[test:testBuilderInvalidOptionName3(org.apache.commons.cli.OptionTest)]</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3ddec942_70'>70</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_70'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>validate<br/><b>Killed by : </b>org.apache.commons.cli.OptionTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionTest]/[test:testHasArgName(org.apache.commons.cli.OptionTest)]</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3ddec942_76'>76</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_76'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>validate<br/><b>Killed by : </b>org.apache.commons.cli.OptionBuilderTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionBuilderTest]/[test:testCreateIncompleteOption(org.apache.commons.cli.OptionBuilderTest)]</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3ddec942_81'>81</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3ddec942_81'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>validate<br/><b>Killed by : </b>org.apache.commons.cli.OptionBuilderTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionBuilderTest]/[test:testBaseOptionStringOpt(org.apache.commons.cli.OptionBuilderTest)]</span></span> replaced return value with &#34;&#34; for org/apache/commons/cli/OptionValidator::validate &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>CONDITIONALS_BOUNDARY</li>
+<li class='mutator'>EMPTY_RETURNS</li>
+<li class='mutator'>FALSE_RETURNS</li>
+<li class='mutator'>INCREMENTS</li>
+<li class='mutator'>INVERT_NEGS</li>
+<li class='mutator'>MATH</li>
+<li class='mutator'>NEGATE_CONDITIONALS</li>
+<li class='mutator'>NULL_RETURNS</li>
+<li class='mutator'>PRIMITIVE_RETURNS</li>
+<li class='mutator'>TRUE_RETURNS</li>
+<li class='mutator'>VOID_METHOD_CALLS</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testStopAtNonOptionShort(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.PatternOptionBuilderTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PatternOptionBuilderTest]/[test:testObjectPattern(org.apache.commons.cli.PatternOptionBuilderTest)] (0 ms)</li><li>org.apache.commons.cli.HelpFormatterTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.HelpFormatterTest]/[test:testPrintOptionWithEmptyArgNameUsage(org.apache.commons.cli.HelpFormatterTest)] (0 ms)</li><li>org.apache.commons.cli.ApplicationTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ApplicationTest]/[test:testNLT(org.apache.commons.cli.ApplicationTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testDoubleDash1(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.ValueTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValueTest]/[test:testShortWithArgWithOption(org.apache.commons.cli.ValueTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugCLI266Test.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugCLI266Test]/[test:testOptionComparatorInsertedOrder(org.apache.commons.cli.bug.BugCLI266Test)] (0 ms)</li><li>org.apache.commons.cli.bug.BugsTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugsTest]/[test:test13425(org.apache.commons.cli.bug.BugsTest)] (0 ms)</li><li>org.apache.commons.cli.ValueTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValueTest]/[test:testShortOptionalArgValuesWithOption(org.apache.commons.cli.ValueTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testLongWithUnexpectedArgument2(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugCLI133Test.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugCLI133Test]/[test:testOrder(org.apache.commons.cli.bug.BugCLI133Test)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testPropertyOverrideValues(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testOptionGroup(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.ValuesTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValuesTest]/[test:testMultipleArgValues(org.apache.commons.cli.ValuesTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testShortOptionQuoteHandling(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testOptionAndRequiredOption(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testAmbiguousPartialLongOption3(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testSimpleShort(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testMissingArg(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugsTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugsTest]/[test:test12210(org.apache.commons.cli.bug.BugsTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugsTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugsTest]/[test:test11456(org.apache.commons.cli.bug.BugsTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testReuseOptionsTwice(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testStopAtExpectedArg(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.OptionGroupTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionGroupTest]/[test:testGetNames(org.apache.commons.cli.OptionGroupTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testLongWithEqualDoubleDash(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testReuseOptionsTwice(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testMultiple(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.ValueTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValueTest]/[test:testLongOptionalNArgValuesWithOption(org.apache.commons.cli.ValueTest)] (0 ms)</li><li>org.apache.commons.cli.ValueTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValueTest]/[test:testLongNoArg(org.apache.commons.cli.ValueTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testWithRequiredOption(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testUnlimitedArgs(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testNegativeArgument(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testPropertyOptionFlags(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.ValueTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValueTest]/[test:testLongOptionalNoValueWithOption(org.apache.commons.cli.ValueTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testUnrecognizedOptionWithBursting(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testPropertiesOption1(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugsTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugsTest]/[test:test11680(org.apache.commons.cli.bug.BugsTest)] (0 ms)</li><li>org.apache.commons.cli.OptionTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionTest]/[test:testHasArgName(org.apache.commons.cli.OptionTest)] (0 ms)</li><li>org.apache.commons.cli.PatternOptionBuilderTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PatternOptionBuilderTest]/[test:testClassPattern(org.apache.commons.cli.PatternOptionBuilderTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testDoubleDash1(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testAmbiguousPartialLongOption4(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.ApplicationTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ApplicationTest]/[test:testLs(org.apache.commons.cli.ApplicationTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testMissingArgWithBursting(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.HelpFormatterTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.HelpFormatterTest]/[test:testHelpWithLongOptSeparator(org.apache.commons.cli.HelpFormatterTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testArgumentStartingWithHyphen(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.HelpFormatterTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.HelpFormatterTest]/[test:testPrintHelpNewlineFooter(org.apache.commons.cli.HelpFormatterTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testMultipleWithLong(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.HelpFormatterTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.HelpFormatterTest]/[test:testPrintOptionGroupUsage(org.apache.commons.cli.HelpFormatterTest)] (0 ms)</li><li>org.apache.commons.cli.OptionBuilderTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionBuilderTest]/[test:testSpecialOptChars(org.apache.commons.cli.OptionBuilderTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testUnambiguousPartialLongOption3(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.ValueTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValueTest]/[test:testShortWithArg(org.apache.commons.cli.ValueTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testDoubleDash1(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testMissingRequiredOptions(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.HelpFormatterTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.HelpFormatterTest]/[test:testUsageWithLongOptSeparator(org.apache.commons.cli.HelpFormatterTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testOptionGroup(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testUnambiguousPartialLongOption4(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testPropertiesOption2(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.OptionTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionTest]/[test:testBuilderInsufficientParams2(org.apache.commons.cli.OptionTest)] (0 ms)</li><li>org.apache.commons.cli.ValueTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValueTest]/[test:testShortOptionalNArgValuesWithOption(org.apache.commons.cli.ValueTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testReuseOptionsTwice(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.OptionTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionTest]/[test:testBuilderInvalidOptionName3(org.apache.commons.cli.OptionTest)] (0 ms)</li><li>org.apache.commons.cli.OptionGroupTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionGroupTest]/[test:testSingleOption(org.apache.commons.cli.OptionGroupTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testLongWithoutEqualDoubleDash(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.ValueTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValueTest]/[test:testShortNoArg(org.apache.commons.cli.ValueTest)] (0 ms)</li><li>org.apache.commons.cli.ValuesTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValuesTest]/[test:testShortArgs(org.apache.commons.cli.ValuesTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testPropertyOptionMultipleValues(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testLongOptionQuoteHandling(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.HelpFormatterTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.HelpFormatterTest]/[test:testOptionWithoutShortFormat2(org.apache.commons.cli.HelpFormatterTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testLongWithEqualDoubleDash(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.OptionTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionTest]/[test:testSubclass(org.apache.commons.cli.OptionTest)] (0 ms)</li><li>org.apache.commons.cli.HelpFormatterTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.HelpFormatterTest]/[test:testPrintSortedUsage(org.apache.commons.cli.HelpFormatterTest)] (0 ms)</li><li>org.apache.commons.cli.ArgumentIsOptionTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ArgumentIsOptionTest]/[test:testOptionAndOptionWithArgument(org.apache.commons.cli.ArgumentIsOptionTest)] (0 ms)</li><li>org.apache.commons.cli.ValueTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValueTest]/[test:testShortOptionalArgNoValueWithOption(org.apache.commons.cli.ValueTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugCLI252Test.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugCLI252Test]/[test:testExactOptionNameMatch(org.apache.commons.cli.bug.BugCLI252Test)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testShortWithEqual(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testStopBursting(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugCLI266Test.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugCLI266Test]/[test:testOptionComparatorDefaultOrder(org.apache.commons.cli.bug.BugCLI266Test)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testPropertyOptionSingularValue(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testUnrecognizedOption(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testWithRequiredOption(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.DisablePartialMatchingTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DisablePartialMatchingTest]/[test:testDisablePartialMatching(org.apache.commons.cli.DisablePartialMatchingTest)] (0 ms)</li><li>org.apache.commons.cli.ValueTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValueTest]/[test:testShortOptionalArgValues(org.apache.commons.cli.ValueTest)] (0 ms)</li><li>org.apache.commons.cli.ValuesTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValuesTest]/[test:testShortArgsWithValue(org.apache.commons.cli.ValuesTest)] (0 ms)</li><li>org.apache.commons.cli.OptionsTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionsTest]/[test:testSimple(org.apache.commons.cli.OptionsTest)] (0 ms)</li><li>org.apache.commons.cli.ValueTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValueTest]/[test:testShortOptionalNArgValues(org.apache.commons.cli.ValueTest)] (0 ms)</li><li>org.apache.commons.cli.OptionTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionTest]/[test:testBuilderInvalidOptionName1(org.apache.commons.cli.OptionTest)] (3 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testMultiple(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testMissingRequiredOptions(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.PatternOptionBuilderTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PatternOptionBuilderTest]/[test:testNumberPattern(org.apache.commons.cli.PatternOptionBuilderTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testLongWithEqualDoubleDash(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.ValueTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValueTest]/[test:testShortNoArgWithOption(org.apache.commons.cli.ValueTest)] (0 ms)</li><li>org.apache.commons.cli.HelpFormatterTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.HelpFormatterTest]/[test:testPrintHelpNewlineHeader(org.apache.commons.cli.HelpFormatterTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testShortWithEqual(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.OptionGroupTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionGroupTest]/[test:testTwoOptionsFromDifferentGroup(org.apache.commons.cli.OptionGroupTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testStopAtUnexpectedArg(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testLongWithEqualSingleDash(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testUnambiguousPartialLongOption2(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testLongWithUnexpectedArgument1(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.OptionGroupTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionGroupTest]/[test:testTwoValidOptions(org.apache.commons.cli.OptionGroupTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testShortOptionQuoteHandling(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testLongWithEqualSingleDash(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.OptionBuilderTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionBuilderTest]/[test:testOptionArgNumbers(org.apache.commons.cli.OptionBuilderTest)] (0 ms)</li><li>org.apache.commons.cli.CommandLineTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.CommandLineTest]/[test:testNullhOption(org.apache.commons.cli.CommandLineTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testMissingRequiredOptions(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugCLI18Test.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugCLI18Test]/[test:testCLI18(org.apache.commons.cli.bug.BugCLI18Test)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testShortOptionQuoteHandlingWithStrip(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.DisablePartialMatchingTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DisablePartialMatchingTest]/[test:testRegularPartialMatching(org.apache.commons.cli.DisablePartialMatchingTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testSingleDash(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.HelpFormatterTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.HelpFormatterTest]/[test:testPrintOptions(org.apache.commons.cli.HelpFormatterTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testSimpleShort(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugsTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugsTest]/[test:test11457(org.apache.commons.cli.bug.BugsTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugsTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugsTest]/[test:test11458(org.apache.commons.cli.bug.BugsTest)] (0 ms)</li><li>org.apache.commons.cli.OptionsTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionsTest]/[test:testMissingOptionException(org.apache.commons.cli.OptionsTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testMissingArg(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testPropertyOptionFlags(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.OptionTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionTest]/[test:testBuilderInvalidOptionName4(org.apache.commons.cli.OptionTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testUnrecognizedOption(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testShortWithUnexpectedArgument(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testShortWithoutEqual(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugsTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugsTest]/[test:test15648(org.apache.commons.cli.bug.BugsTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testStopAtExpectedArg(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.OptionGroupTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionGroupTest]/[test:testToString(org.apache.commons.cli.OptionGroupTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testStopAtNonOptionLong(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.ValueTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValueTest]/[test:testLongOptionalArgValues(org.apache.commons.cli.ValueTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testPropertyOptionUnexpected(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testWithRequiredOption(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testShortWithoutEqual(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testMissingArgWithBursting(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.ApplicationTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ApplicationTest]/[test:testMan(org.apache.commons.cli.ApplicationTest)] (1 ms)</li><li>org.apache.commons.cli.bug.BugCLI162Test.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugCLI162Test]/[test:testInfiniteLoop(org.apache.commons.cli.bug.BugCLI162Test)] (0 ms)</li><li>org.apache.commons.cli.bug.BugCLI252Test.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugCLI252Test]/[test:testAmbiquousOptionName(org.apache.commons.cli.bug.BugCLI252Test)] (0 ms)</li><li>org.apache.commons.cli.OptionBuilderTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionBuilderTest]/[test:testBaseOptionStringOpt(org.apache.commons.cli.OptionBuilderTest)] (0 ms)</li><li>org.apache.commons.cli.OptionBuilderTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionBuilderTest]/[test:testBuilderIsResettedAlways(org.apache.commons.cli.OptionBuilderTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testSimpleLong(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.OptionTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionTest]/[test:testHasArgs(org.apache.commons.cli.OptionTest)] (0 ms)</li><li>org.apache.commons.cli.ValueTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValueTest]/[test:testLongWithArg(org.apache.commons.cli.ValueTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testSingleDash(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testUnrecognizedOption(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testPropertiesOption1(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testPropertiesOption2(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testPropertyOptionRequired(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testAmbiguousPartialLongOption1(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testNegativeArgument(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.OptionsTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionsTest]/[test:testGetOptionsGroups(org.apache.commons.cli.OptionsTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testOptionGroup(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testOptionGroup(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testStopAtUnexpectedArg(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.PatternOptionBuilderTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PatternOptionBuilderTest]/[test:testURLPattern(org.apache.commons.cli.PatternOptionBuilderTest)] (0 ms)</li><li>org.apache.commons.cli.OptionsTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionsTest]/[test:testHelpOptions(org.apache.commons.cli.OptionsTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testMissingRequiredOption(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testOptionGroupLong(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.OptionBuilderTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionBuilderTest]/[test:testIllegalOptions(org.apache.commons.cli.OptionBuilderTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugCLI13Test.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugCLI13Test]/[test:testCLI13(org.apache.commons.cli.bug.BugCLI13Test)] (0 ms)</li><li>org.apache.commons.cli.OptionBuilderTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionBuilderTest]/[test:testBaseOptionCharOpt(org.apache.commons.cli.OptionBuilderTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testLongOptionQuoteHandling(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.OptionGroupTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionGroupTest]/[test:testSingleLongOption(org.apache.commons.cli.OptionGroupTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugCLI148Test.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugCLI148Test]/[test:testWorkaround1(org.apache.commons.cli.bug.BugCLI148Test)] (0 ms)</li><li>org.apache.commons.cli.OptionGroupTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionGroupTest]/[test:testTwoOptionsFromGroupWithProperties(org.apache.commons.cli.OptionGroupTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testStopAtNonOptionLong(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testPropertyOptionFlags(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testStopBursting2(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.HelpFormatterTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.HelpFormatterTest]/[test:testAutomaticUsage(org.apache.commons.cli.HelpFormatterTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testStopAtUnexpectedArg(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testSimpleLong(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugsTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugsTest]/[test:test13935(org.apache.commons.cli.bug.BugsTest)] (0 ms)</li><li>org.apache.commons.cli.OptionTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionTest]/[test:testBuilderInvalidOptionName2(org.apache.commons.cli.OptionTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testAmbiguousPartialLongOption2(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testMultiple(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testLongOptionWithEqualsQuoteHandling(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testAmbiguousLongWithoutEqualSingleDash(org.apache.commons.cli.DefaultParserTest)] (1 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testPropertyOverrideValues(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testDoubleDash2(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testLongWithoutEqualSingleDash(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.CommandLineTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.CommandLineTest]/[test:testGetParsedOptionValueWithChar(org.apache.commons.cli.CommandLineTest)] (0 ms)</li><li>org.apache.commons.cli.OptionGroupTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionGroupTest]/[test:testTwoValidLongOptions(org.apache.commons.cli.OptionGroupTest)] (0 ms)</li><li>org.apache.commons.cli.OptionsTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionsTest]/[test:testGetMatchingOpts(org.apache.commons.cli.OptionsTest)] (0 ms)</li><li>org.apache.commons.cli.HelpFormatterTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.HelpFormatterTest]/[test:testPrintRequiredOptionGroupUsage(org.apache.commons.cli.HelpFormatterTest)] (0 ms)</li><li>org.apache.commons.cli.HelpFormatterTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.HelpFormatterTest]/[test:testOptionWithoutShortFormat(org.apache.commons.cli.HelpFormatterTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testPropertyOptionRequired(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testBursting(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testMissingRequiredOptions(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testPropertyOptionGroup(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testNegativeOption(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testUnlimitedArgs(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testSimpleLong(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testLongWithoutEqualDoubleDash(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testLongOptionWithEqualsQuoteHandling(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.ValuesTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValuesTest]/[test:testExtraArgs(org.apache.commons.cli.ValuesTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testNegativeArgument(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testShortOptionConcatenatedQuoteHandling(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testLongOptionQuoteHandlingWithStrip(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testLongOptionQuoteHandlingWithoutStrip(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.OptionTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionTest]/[test:testBuilderInsufficientParams1(org.apache.commons.cli.OptionTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testMissingRequiredGroup(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.PatternOptionBuilderTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PatternOptionBuilderTest]/[test:testSimplePattern(org.apache.commons.cli.PatternOptionBuilderTest)] (69 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testStopAtUnexpectedArg(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testArgumentStartingWithHyphen(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugCLI265Test.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugCLI265Test]/[test:shouldParseShortOptionWithValue(org.apache.commons.cli.bug.BugCLI265Test)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testOptionGroupLong(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testDoubleDash1(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testPropertyOptionUnexpected(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugCLI162Test.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugCLI162Test]/[test:testLongLineChunkingIndentIgnored(org.apache.commons.cli.bug.BugCLI162Test)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testOptionAndRequiredOption(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testLongOptionQuoteHandling(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testMissingRequiredOption(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testShortOptionConcatenatedQuoteHandling(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.CommandLineTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.CommandLineTest]/[test:testGetOptions(org.apache.commons.cli.CommandLineTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testUnlimitedArgs(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.OptionBuilderTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionBuilderTest]/[test:testCreateIncompleteOption(org.apache.commons.cli.OptionBuilderTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testPropertyOptionRequired(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugCLI265Test.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugCLI265Test]/[test:shouldParseShortOptionWithoutValue(org.apache.commons.cli.bug.BugCLI265Test)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testPropertyOptionFlags(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testArgumentStartingWithHyphen(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.CommandLineTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.CommandLineTest]/[test:testBuilder(org.apache.commons.cli.CommandLineTest)] (0 ms)</li><li>org.apache.commons.cli.OptionsTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionsTest]/[test:testMissingOptionsException(org.apache.commons.cli.OptionsTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testPropertyOptionMultipleValues(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testLongOptionWithEqualsQuoteHandlingWithStrip(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugsTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugsTest]/[test:test31148(org.apache.commons.cli.bug.BugsTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testLongWithoutEqualDoubleDash(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.ValuesTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValuesTest]/[test:testTwoArgValues(org.apache.commons.cli.ValuesTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testBuilder(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testUnambiguousPartialLongOption1(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testUnambiguousPartialLongOption2(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testShortOptionConcatenatedQuoteHandling(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.CommandLineTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.CommandLineTest]/[test:testGetParsedOptionValueWithOption(org.apache.commons.cli.CommandLineTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testMultipleWithLong(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testLongOptionWithEqualsQuoteHandlingWithoutStrip(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugCLI71Test.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugCLI71Test]/[test:testGetsDefaultIfOptional(org.apache.commons.cli.bug.BugCLI71Test)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testPropertyOverrideValues(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testMissingRequiredGroup(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.PatternOptionBuilderTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PatternOptionBuilderTest]/[test:testRequiredOption(org.apache.commons.cli.PatternOptionBuilderTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testShortWithoutEqual(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.ValuesTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValuesTest]/[test:testComplexValues(org.apache.commons.cli.ValuesTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testUnrecognizedOptionWithBursting(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.ValueTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValueTest]/[test:testLongOptionalArgValueWithOption(org.apache.commons.cli.ValueTest)] (0 ms)</li><li>org.apache.commons.cli.OptionGroupTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionGroupTest]/[test:testNoOptionsExtraArgs(org.apache.commons.cli.OptionGroupTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testStopAtExpectedArg(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testMultipleWithLong(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.ValueTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValueTest]/[test:testLongOptionalNArgValues(org.apache.commons.cli.ValueTest)] (0 ms)</li><li>org.apache.commons.cli.ValueTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValueTest]/[test:testLongNoArgWithOption(org.apache.commons.cli.ValueTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugCLI265Test.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugCLI265Test]/[test:shouldParseConcatenatedShortOptions(org.apache.commons.cli.bug.BugCLI265Test)] (0 ms)</li><li>org.apache.commons.cli.ValueTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValueTest]/[test:testLongOptionalArgValue(org.apache.commons.cli.ValueTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testOptionGroupLong(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testPropertyOptionGroup(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugCLI71Test.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugCLI71Test]/[test:testLackOfError(org.apache.commons.cli.bug.BugCLI71Test)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testLongWithUnexpectedArgument2(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testStopAtNonOptionLong(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testMissingRequiredOption(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testPropertyOptionSingularValue(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.ApplicationTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ApplicationTest]/[test:testAnt(org.apache.commons.cli.ApplicationTest)] (4 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testOptionAndRequiredOption(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testPropertiesOption1(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.PatternOptionBuilderTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PatternOptionBuilderTest]/[test:testUntypedPattern(org.apache.commons.cli.PatternOptionBuilderTest)] (0 ms)</li><li>org.apache.commons.cli.ValueTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValueTest]/[test:testLongOptionalArgValuesWithOption(org.apache.commons.cli.ValueTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testStopAtNonOptionShort(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testPropertyOptionSingularValue(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.ApplicationTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ApplicationTest]/[test:testGroovy(org.apache.commons.cli.ApplicationTest)] (0 ms)</li><li>org.apache.commons.cli.OptionsTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionsTest]/[test:testToString(org.apache.commons.cli.OptionsTest)] (0 ms)</li><li>org.apache.commons.cli.OptionTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionTest]/[test:testHashCode(org.apache.commons.cli.OptionTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testPartialLongOptionSingleDash(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.CommandLineTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.CommandLineTest]/[test:testGetOptionPropertiesWithOption(org.apache.commons.cli.CommandLineTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testPropertyOptionSingularValue(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testAmbiguousPartialLongOption1(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testStopAtNonOptionLong(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.OptionsTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionsTest]/[test:testDuplicateLong(org.apache.commons.cli.OptionsTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testLongWithoutEqualDoubleDash(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testPropertyOptionMultipleValues(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.ValueTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValueTest]/[test:testLongOptionalNoValue(org.apache.commons.cli.ValueTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugCLI162Test.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugCLI162Test]/[test:testLongLineChunking(org.apache.commons.cli.bug.BugCLI162Test)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testShortOptionQuoteHandling(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testLongOptionWithEqualsQuoteHandling(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testOptionAndRequiredOption(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.OptionGroupTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionGroupTest]/[test:testValidLongOnlyOptions(org.apache.commons.cli.OptionGroupTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testStopAtExpectedArg(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.HelpFormatterTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.HelpFormatterTest]/[test:testDefaultArgName(org.apache.commons.cli.HelpFormatterTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testUnrecognizedOption(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testPropertiesOption2(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.PatternOptionBuilderTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PatternOptionBuilderTest]/[test:testExistingFilePatternFileNotExist(org.apache.commons.cli.PatternOptionBuilderTest)] (0 ms)</li><li>org.apache.commons.cli.PatternOptionBuilderTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PatternOptionBuilderTest]/[test:testExistingFilePattern(org.apache.commons.cli.PatternOptionBuilderTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testShortWithUnexpectedArgument(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testAmbiguousPartialLongOption3(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugsTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugsTest]/[test:test15046(org.apache.commons.cli.bug.BugsTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testPropertyOptionUnexpected(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.CommandLineTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.CommandLineTest]/[test:testGetOptionProperties(org.apache.commons.cli.CommandLineTest)] (0 ms)</li><li>org.apache.commons.cli.OptionsTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionsTest]/[test:testLong(org.apache.commons.cli.OptionsTest)] (0 ms)</li><li>org.apache.commons.cli.OptionTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionTest]/[test:testBuilderMethods(org.apache.commons.cli.OptionTest)] (0 ms)</li><li>org.apache.commons.cli.HelpFormatterTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.HelpFormatterTest]/[test:testPrintSortedUsageWithNullComparator(org.apache.commons.cli.HelpFormatterTest)] (0 ms)</li><li>org.apache.commons.cli.OptionGroupTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionGroupTest]/[test:testSingleOptionFromGroup(org.apache.commons.cli.OptionGroupTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testPropertyOptionGroup(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testUnambiguousPartialLongOption3(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.ArgumentIsOptionTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ArgumentIsOptionTest]/[test:testOption(org.apache.commons.cli.ArgumentIsOptionTest)] (0 ms)</li><li>org.apache.commons.cli.OptionsTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionsTest]/[test:testDuplicateSimple(org.apache.commons.cli.OptionsTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testMissingArg(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.CommandLineTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.CommandLineTest]/[test:testGetParsedOptionValue(org.apache.commons.cli.CommandLineTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugCLI71Test.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugCLI71Test]/[test:testMistakenArgument(org.apache.commons.cli.bug.BugCLI71Test)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testPropertyOptionRequired(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.HelpFormatterTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.HelpFormatterTest]/[test:testPrintUsage(org.apache.commons.cli.HelpFormatterTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testPartialLongOptionSingleDash(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testMissingRequiredOption(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testShortOptionQuoteHandling(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testBursting(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.ValueTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValueTest]/[test:testLongWithArgWithOption(org.apache.commons.cli.ValueTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testMissingArg(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugsTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugsTest]/[test:test14786(org.apache.commons.cli.bug.BugsTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testStopBursting(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.OptionGroupTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionGroupTest]/[test:testTwoOptionsFromGroup(org.apache.commons.cli.OptionGroupTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testOptionGroupLong(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testSimpleShort(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testSimpleShort(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testReuseOptionsTwice(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugCLI162Test.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugCLI162Test]/[test:testPrintHelpLongLines(org.apache.commons.cli.bug.BugCLI162Test)] (2 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testLongOptionQuoteHandling(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testShortOptionQuoteHandlingWithoutStrip(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugCLI148Test.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugCLI148Test]/[test:testWorkaround2(org.apache.commons.cli.bug.BugCLI148Test)] (0 ms)</li><li>org.apache.commons.cli.OptionTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionTest]/[test:testGetValue(org.apache.commons.cli.OptionTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testNegativeArgument(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.ValueTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValueTest]/[test:testShortOptionalArgValueWithOption(org.apache.commons.cli.ValueTest)] (0 ms)</li><li>org.apache.commons.cli.OptionBuilderTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionBuilderTest]/[test:testCompleteOption(org.apache.commons.cli.OptionBuilderTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testSingleDash(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.OptionGroupTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionGroupTest]/[test:testTwoLongOptionsFromGroup(org.apache.commons.cli.OptionGroupTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testSimpleLong(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testPropertyOverrideValues(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.ValuesTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValuesTest]/[test:testCharSeparator(org.apache.commons.cli.ValuesTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testMultiple(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testShortWithUnexpectedArgument(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testMultipleWithLong(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testStopBursting2(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.OptionTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionTest]/[test:testClone(org.apache.commons.cli.OptionTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testUnambiguousPartialLongOption1(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testMissingRequiredGroup(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testMissingRequiredGroup(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testLongWithUnexpectedArgument2(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testPropertyOptionUnexpected(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testLongWithUnexpectedArgument1(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testStopAtNonOptionShort(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testPropertyOptionGroup(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.ValueTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValueTest]/[test:testShortOptionalArgValue(org.apache.commons.cli.ValueTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testPropertyOptionMultipleValues(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.ArgumentIsOptionTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ArgumentIsOptionTest]/[test:testOptionWithArgument(org.apache.commons.cli.ArgumentIsOptionTest)] (0 ms)</li><li>org.apache.commons.cli.GnuParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.GnuParserTest]/[test:testUnlimitedArgs(org.apache.commons.cli.GnuParserTest)] (0 ms)</li><li>org.apache.commons.cli.ValueTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.ValueTest]/[test:testShortOptionalArgNoValue(org.apache.commons.cli.ValueTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugsTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugsTest]/[test:test13666(org.apache.commons.cli.bug.BugsTest)] (0 ms)</li><li>org.apache.commons.cli.OptionBuilderTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionBuilderTest]/[test:testTwoCompleteOptions(org.apache.commons.cli.OptionBuilderTest)] (0 ms)</li><li>org.apache.commons.cli.BasicParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.BasicParserTest]/[test:testStopAtNonOptionShort(org.apache.commons.cli.BasicParserTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testAmbiguousPartialLongOption2(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testWithRequiredOption(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.bug.BugCLI71Test.[engine:junit-vintage]/[runner:org.apache.commons.cli.bug.BugCLI71Test]/[test:testBasic(org.apache.commons.cli.bug.BugCLI71Test)] (0 ms)</li><li>org.apache.commons.cli.PosixParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.PosixParserTest]/[test:testSingleDash(org.apache.commons.cli.PosixParserTest)] (0 ms)</li><li>org.apache.commons.cli.OptionTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.OptionTest]/[test:testClear(org.apache.commons.cli.OptionTest)] (0 ms)</li><li>org.apache.commons.cli.DefaultParserTest.[engine:junit-vintage]/[runner:org.apache.commons.cli.DefaultParserTest]/[test:testArgumentStartingWithHyphen(org.apache.commons.cli.DefaultParserTest)] (0 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.10.3
+
+</body>
+</html>
